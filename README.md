@@ -4,8 +4,13 @@
 
 ## 快速访问
 
-- [阅读完整 DESIGN.md](./DESIGN.md)
+- [在 GitHub 阅读完整 DESIGN.md](https://github.com/leenlbma/ai-foundation-design-system/blob/main/DESIGN.md)
+- [获取 DESIGN.md Raw 直链](https://raw.githubusercontent.com/leenlbma/ai-foundation-design-system/main/DESIGN.md)
 - 将 DESIGN.md 放入产品或前端项目根目录，让设计师、工程师和 AI Coding Agent 共享同一套设计契约。
+
+AI 工具可以直接使用以下提示词：
+
+> 阅读 https://raw.githubusercontent.com/leenlbma/ai-foundation-design-system/main/DESIGN.md，并严格遵循其中的 Token、组件规则与 AI 基座产品契约进行设计和实现。
 
 ## 规范基础
 
@@ -50,4 +55,3 @@ npx @google/design.md diff DESIGN.previous.md DESIGN.md
 - Markdown 正文解释设计理由、使用边界与验收标准。
 - 新增页面优先复用现有 Component、Pattern 和 Token。
 - 例外必须记录原因、Owner、风险、缓解措施和过期时间。
-
