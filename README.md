@@ -10,7 +10,8 @@
 
 AI 工具可以直接使用以下提示词：
 
-> 阅读 https://raw.githubusercontent.com/leenlbma/ai-foundation-design-system/main/DESIGN.md，并严格遵循其中的 Token、组件规则与 AI 基座产品契约进行设计和实现。
+> 阅读 https://raw.githubusercontent.com/leenlbma/ai-foundation-design-system/main/DESIGN.md
+> 并严格遵循其中的 Token、组件规则与 AI 基座产品契约进行设计和实现。
 
 ## 规范基础
 
