@@ -34,6 +34,14 @@ colors:
   risk-container: '#FFF1F0'
   on-primary: '#FFFFFF'
   focus-ring: '#1677FF'
+  chart-1: '#0072B2'
+  chart-2: '#B3261E'
+  chart-3: '#5C4BC4'
+  chart-4: '#B0487F'
+  chart-5: '#8A6D00'
+  chart-6: '#007A5E'
+  chart-7: '#D55E00'
+  chart-8: '#5A5A5A'
   scrim: 'rgba(0, 0, 0, 0.45)'
   overlay-edge: 'rgba(0, 0, 0, 0.08)'
   shadow-color: 'rgba(0, 0, 0, 0.15)'
@@ -70,6 +78,14 @@ colors:
   dark-scrim: 'rgba(0, 0, 0, 0.65)'
   dark-overlay-edge: 'rgba(255, 255, 255, 0.16)'
   dark-shadow-color: 'rgba(0, 0, 0, 0.60)'
+  dark-chart-1: '#56B4E9'
+  dark-chart-2: '#FF8A80'
+  dark-chart-3: '#9C8CFF'
+  dark-chart-4: '#E58BC0'
+  dark-chart-5: '#F0E442'
+  dark-chart-6: '#2DC9A0'
+  dark-chart-7: '#E69F00'
+  dark-chart-8: '#BDBDBD'
 typography:
   display-lg:
     fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif"
@@ -438,6 +454,54 @@ components:
     height: 1px
   dark-popover-shadow:
     backgroundColor: '{colors.dark-shadow-color}'
+  chart-series-1:
+    backgroundColor: '{colors.chart-1}'
+    height: 8px
+  chart-series-2:
+    backgroundColor: '{colors.chart-2}'
+    height: 8px
+  chart-series-3:
+    backgroundColor: '{colors.chart-3}'
+    height: 8px
+  chart-series-4:
+    backgroundColor: '{colors.chart-4}'
+    height: 8px
+  chart-series-5:
+    backgroundColor: '{colors.chart-5}'
+    height: 8px
+  chart-series-6:
+    backgroundColor: '{colors.chart-6}'
+    height: 8px
+  chart-series-7:
+    backgroundColor: '{colors.chart-7}'
+    height: 8px
+  chart-series-8:
+    backgroundColor: '{colors.chart-8}'
+    height: 8px
+  dark-chart-series-1:
+    backgroundColor: '{colors.dark-chart-1}'
+    height: 8px
+  dark-chart-series-2:
+    backgroundColor: '{colors.dark-chart-2}'
+    height: 8px
+  dark-chart-series-3:
+    backgroundColor: '{colors.dark-chart-3}'
+    height: 8px
+  dark-chart-series-4:
+    backgroundColor: '{colors.dark-chart-4}'
+    height: 8px
+  dark-chart-series-5:
+    backgroundColor: '{colors.dark-chart-5}'
+    height: 8px
+  dark-chart-series-6:
+    backgroundColor: '{colors.dark-chart-6}'
+    height: 8px
+  dark-chart-series-7:
+    backgroundColor: '{colors.dark-chart-7}'
+    height: 8px
+  dark-chart-series-8:
+    backgroundColor: '{colors.dark-chart-8}'
+    height: 8px
 ---
 
 # AI 基座设计规范
@@ -503,6 +567,14 @@ components:
 - 浮层边缘：深色下阴影几乎不可见，Dropdown、Popover、Modal、Drawer 加 1px `dark-overlay-edge`（白 16%）高亮边，并使用 `surface-elevated`。浅色使用 `overlay-edge`（黑 8%）作为可选细边，主要靠阴影。
 - 阴影：浅色已有 Level 1 到 3 阴影，颜色统一为 `shadow-color`（黑 15%）。深色用 `dark-shadow-color`（黑 60%），只作辅助，不能代替亮度和高亮边。阴影尺寸导出为 `--shadow-level-1/2/3`，随主题自动切换颜色。
 - 对比度：浅色下弹层表面对遮罩后的页面至少 3:1；深色下弹层高亮边对遮罩后的页面至少 2:1。由 `build-dark.mjs` 计算，低于要求 CI 失败。
+
+### 数据可视化色
+
+- 分类色：`chart-1` 到 `chart-8`（浅色）和 `dark-chart-1` 到 `dark-chart-8`（深色），基于 Okabe-Ito 色盲友好色板调整。相邻序号刻意拉开色相和明度，按序号顺序取色，不跳取。
+- 数量：同一图表建议不超过 6 个系列，超过 6 个先合并为「其他」。必须配图例或直接标注，同时使用线型、标记形状或数据标签，不能只靠颜色区分。
+- 对比度：每个分类色对四个表面至少 3:1（图形对象要求）。相邻序号在红色盲、绿色盲、蓝黄色盲模拟下色差 ΔE 至少 25。由 `build-dark.mjs` 计算，不达标则 CI 失败。
+- 顺序色板：表示从低到高的连续数值时，用单一色相渐变，导出为 `--chart-seq-1` 到 `--chart-seq-5`，由 primary 与当前表面按 30%、45%、60%、80%、100% 混合而成，随主题自动切换。最浅的几档不要承载需要精确辨认的信息，必须配数值标注。
+- 语义色：状态用 success、warning、error，对象类型用 ai-accent、knowledge-accent、tool-accent，这些语义色不要放进分类色序列，以免和含义冲突。图表里表达「正常或异常」时用语义色，表达「A、B、C 是不同类别」时用分类色。
 
 ## Typography
 

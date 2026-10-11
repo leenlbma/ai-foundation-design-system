@@ -50,10 +50,28 @@ for (const [c, f] of [['ai-accent-container', 'ai-accent'], ['knowledge-containe
   checks.push([`text ${f} on ${c}`, f, c, 4.5]);
 for (const s of surfaces) for (const t of ['outline-control', 'focus-ring', 'success', 'warning', 'error']) checks.push([`non-text ${t} on ${s}`, t, s, 3]);
 for (const s of ['surface', 'surface-container']) checks.push([`non-text primary on ${s}`, 'primary', s, 3]);
+// chart palette: >=3:1 on every surface, adjacent series distinguishable under color-vision deficiency
+const lin = (v) => { v /= 255; return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
+const gam = (v) => 255 * (v <= 0.0031308 ? 12.92 * v : 1.055 * v ** (1 / 2.4) - 0.055);
+const CVD = { protan: [[.152286, 1.052583, -.204868], [.114503, .786281, .099216], [-.003882, -.048116, 1.051998]],
+  deutan: [[.367322, .860646, -.227968], [.280085, .672501, .047413], [-.01182, .04294, .968881]],
+  tritan: [[1.255528, -.076749, -.178779], [-.078411, .930809, .147602], [.004733, .691367, .303900]] };
+const sim = (c, m) => { const l = c.map(lin); return CVD[m].map((r) => gam(Math.min(1, Math.max(0, r[0] * l[0] + r[1] * l[1] + r[2] * l[2])))); };
+const lab = (c) => { const [r, g, b] = c.map(lin); const f = (t) => (t > 0.008856 ? Math.cbrt(t) : 7.787 * t + 16 / 116);
+  const x = f((0.4124 * r + 0.3576 * g + 0.1805 * b) / 0.95047), y = f(0.2126 * r + 0.7152 * g + 0.0722 * b), z = f((0.0193 * r + 0.1192 * g + 0.9505 * b) / 1.08883);
+  return [116 * y - 16, 500 * (x - y), 200 * (y - z)]; };
+const dE = (a, b) => Math.hypot(...lab(a).map((v, i) => v - lab(b)[i]));
+const chartRows = [];
+for (const th of ['light', 'dark']) {
+  const T = P[th], ids = [1, 2, 3, 4, 5, 6, 7, 8].map((i) => `chart-${i}`);
+  ids.forEach((id) => surfaces.forEach((s) => chartRows.push({ l: `${th} ${id} on ${s}`, r: ratio(id, s, T), min: 3 })));
+  for (let i = 0; i < 7; i++) for (const m of ['protan', 'deutan', 'tritan'])
+    chartRows.push({ l: `${th} ${ids[i]} vs ${ids[i + 1]} (${m}, deltaE)`, r: dE(sim(T[ids[i]].rgb, m), sim(T[ids[i + 1]].rgb, m)), min: 25 });
+}
 const extra = []; // [label, fg, bg, min, theme]
 extra.push(['modal surface vs scrimmed page', 'surface-elevated', 'scrimmed-layout', 3, 'light'],
   ['modal edge vs scrimmed page', 'edge-on-elevated', 'scrimmed-layout', 2, 'dark']);
-const rows = [...checks.map(([l, f, b, min]) => ({ l, r: ratio(f, b, P.dark), min })),
+const rows = [...chartRows, ...checks.map(([l, f, b, min]) => ({ l, r: ratio(f, b, P.dark), min })),
   ...extra.map(([l, f, b, min, th]) => ({ l: `${th} ${l}`, r: ratio(f, b, P[th]), min }))];
 const bad = rows.filter((x) => x.r < x.min);
 if (args.includes('--report')) {
@@ -84,6 +102,11 @@ ${body('    ')}
   --shadow-level-1: 0 2px 8px 0 var(--color-shadow-color);
   --shadow-level-2: 0 6px 16px 0 var(--color-shadow-color);
   --shadow-level-3: 0 9px 28px 8px var(--color-shadow-color);
+}
+
+/* Sequential chart ramp: one hue (primary) mixed into the current surface. */
+:root {
+${[30, 45, 60, 80, 100].map((p, i) => `  --chart-seq-${i + 1}: color-mix(in srgb, var(--color-primary) ${p}%, var(--color-surface));`).join('\n')}
 }
 
 .dark {

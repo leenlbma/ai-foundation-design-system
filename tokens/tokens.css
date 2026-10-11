@@ -29,6 +29,14 @@
   --color-risk-container: #fff1f0;
   --color-on-primary: #ffffff;
   --color-focus-ring: #1677ff;
+  --color-chart-1: #0072b2;
+  --color-chart-2: #b3261e;
+  --color-chart-3: #5c4bc4;
+  --color-chart-4: #b0487f;
+  --color-chart-5: #8a6d00;
+  --color-chart-6: #007a5e;
+  --color-chart-7: #d55e00;
+  --color-chart-8: #5a5a5a;
   --color-scrim: #00000073;
   --color-overlay-edge: #00000014;
   --color-shadow-color: #00000026;
@@ -129,6 +137,14 @@
     --color-scrim: rgba(0, 0, 0, 0.65);
     --color-overlay-edge: rgba(255, 255, 255, 0.16);
     --color-shadow-color: rgba(0, 0, 0, 0.60);
+    --color-chart-1: #56B4E9;
+    --color-chart-2: #FF8A80;
+    --color-chart-3: #9C8CFF;
+    --color-chart-4: #E58BC0;
+    --color-chart-5: #F0E442;
+    --color-chart-6: #2DC9A0;
+    --color-chart-7: #E69F00;
+    --color-chart-8: #BDBDBD;
   }
 }
 
@@ -137,6 +153,15 @@
   --shadow-level-1: 0 2px 8px 0 var(--color-shadow-color);
   --shadow-level-2: 0 6px 16px 0 var(--color-shadow-color);
   --shadow-level-3: 0 9px 28px 8px var(--color-shadow-color);
+}
+
+/* Sequential chart ramp: one hue (primary) mixed into the current surface. */
+:root {
+  --chart-seq-1: color-mix(in srgb, var(--color-primary) 30%, var(--color-surface));
+  --chart-seq-2: color-mix(in srgb, var(--color-primary) 45%, var(--color-surface));
+  --chart-seq-3: color-mix(in srgb, var(--color-primary) 60%, var(--color-surface));
+  --chart-seq-4: color-mix(in srgb, var(--color-primary) 80%, var(--color-surface));
+  --chart-seq-5: color-mix(in srgb, var(--color-primary) 100%, var(--color-surface));
 }
 
 .dark {
@@ -174,4 +199,12 @@
   --color-scrim: rgba(0, 0, 0, 0.65);
   --color-overlay-edge: rgba(255, 255, 255, 0.16);
   --color-shadow-color: rgba(0, 0, 0, 0.60);
+  --color-chart-1: #56B4E9;
+  --color-chart-2: #FF8A80;
+  --color-chart-3: #9C8CFF;
+  --color-chart-4: #E58BC0;
+  --color-chart-5: #F0E442;
+  --color-chart-6: #2DC9A0;
+  --color-chart-7: #E69F00;
+  --color-chart-8: #BDBDBD;
 }
