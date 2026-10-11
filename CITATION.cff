@@ -2,6 +2,7 @@ cff-version: 1.2.0
 message: "If you use this specification, please cite it as below."
 title: "AI Foundation Design System"
 type: generic
+version: 0.1.0
 authors:
   - family-names: Ma
     given-names: Leen

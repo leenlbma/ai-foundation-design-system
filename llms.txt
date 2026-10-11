@@ -21,6 +21,9 @@ Source: https://github.com/leenlbma/ai-foundation-design-system
 - [DESIGN.md](https://raw.githubusercontent.com/leenlbma/ai-foundation-design-system/main/DESIGN.md): 完整规范，YAML front matter 为机器可读的 Token，正文为设计理由与规则。
 - [README.md](https://raw.githubusercontent.com/leenlbma/ai-foundation-design-system/main/README.md): 项目说明、校验方法与使用方式。
 
+- [examples/](https://github.com/leenlbma/ai-foundation-design-system/tree/main/examples): 单文件示例页，线上：https://leenlbma.github.io/ai-foundation-design-system/examples/resource-list.html
+- [tokens/](https://github.com/leenlbma/ai-foundation-design-system/tree/main/tokens): 导出产物 tokens.css、tokens.json、antd-theme.json / antd-theme.mjs（antd v5 浅色与深色主题）；线上：https://leenlbma.github.io/ai-foundation-design-system/tokens/tokens.css
+
 ## 章节索引（取自 DESIGN.md）
 
 - Overview

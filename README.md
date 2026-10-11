@@ -72,7 +72,7 @@ node tokens/build-dark.mjs --report   # 同时打印深色色表与全部对比�
 
 ## 示例页
 
-[`examples/resource-list.html`](examples/resource-list.html) 是一个单文件、无外部依赖的「AI 平台资源列表」示例，内联 `tokens.css` 变量，演示页头、搜索筛选、表格状态徽标、危险与禁用按钮、输入框状态、焦点环、AI 生成内容块和分类色图表，右上角可切换浅色、深色和跟随系统，手机上可读。下载后用浏览器直接打开即可（暂未开启 GitHub Pages）。
+[`examples/resource-list.html`](examples/resource-list.html) 是一个单文件、无外部依赖的「AI 平台资源列表」示例，内联 `tokens.css` 变量，演示页头、搜索筛选、表格状态徽标、危险与禁用按钮、输入框状态、焦点环、AI 生成内容块和分类色图表，右上角可切换浅色、深色和跟随系统，手机上可读。在线查看：[https://leenlbma.github.io/ai-foundation-design-system/examples/resource-list.html](https://leenlbma.github.io/ai-foundation-design-system/examples/resource-list.html)（站点首页：[https://leenlbma.github.io/ai-foundation-design-system/](https://leenlbma.github.io/ai-foundation-design-system/)）；也可下载后用浏览器直接打开。
 
 ~~~bash
 node examples/build-example.mjs   # 由 resource-list.src.html 与 tokens/tokens.css 生成 resource-list.html

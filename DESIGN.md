@@ -1,5 +1,4 @@
 ---
-version: alpha
 name: AI Foundation Design System
 license: CC-BY-4.0
 description: Enterprise AI foundation design system built on Ant Design conventions, optimized for model, knowledge, agent, workflow, evaluation, observability, and governance products.
