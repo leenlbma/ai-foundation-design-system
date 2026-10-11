@@ -54,6 +54,20 @@ npx @google/design.md lint DESIGN.md
 npx @google/design.md diff DESIGN.previous.md DESIGN.md
 ~~~
 
+## 导出与使用
+
+`tokens/` 目录由官方 CLI 从 `DESIGN.md` 生成，请勿手工修改：
+
+```bash
+npx -y @google/design.md export DESIGN.md --format css-tailwind > tokens/tokens.css
+npx -y @google/design.md export DESIGN.md --format dtcg > tokens/tokens.json
+```
+
+- `tokens/tokens.css`：Tailwind v4 `@theme` CSS 变量。
+- `tokens/tokens.json`：W3C DTCG 格式设计令牌。
+
+修改 `DESIGN.md` 后必须重新导出；CI 会比对导出文件，不一致则失败。
+
 ## 维护原则
 
 - YAML Front Matter 中的 Token 是机器执行的规范值。

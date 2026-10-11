@@ -16,3 +16,9 @@ jobs:
         with:
           node-version: 22
       - run: npx -y @google/design.md lint DESIGN.md
+      - name: Check exported tokens are up to date
+        run: |
+          npx -y @google/design.md export DESIGN.md --format css-tailwind > /tmp/tokens.css
+          npx -y @google/design.md export DESIGN.md --format dtcg > /tmp/tokens.json
+          diff -u tokens/tokens.css /tmp/tokens.css
+          diff -u tokens/tokens.json /tmp/tokens.json
