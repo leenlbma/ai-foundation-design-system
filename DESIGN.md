@@ -34,6 +34,36 @@ colors:
   risk-container: '#FFF1F0'
   on-primary: '#FFFFFF'
   focus-ring: '#1677FF'
+  dark-primary: '#4096FF'
+  dark-primary-hover: '#69B1FF'
+  dark-primary-active: '#2B85F5'
+  dark-success: '#73D13D'
+  dark-success-text: '#95DE64'
+  dark-warning: '#FFA940'
+  dark-warning-text: '#FFC069'
+  dark-error: '#FF7875'
+  dark-error-hover: '#FFA39E'
+  dark-info: '#4096FF'
+  dark-surface: '#141414'
+  dark-surface-container: '#1F1F1F'
+  dark-surface-layout: '#0D0D0D'
+  dark-surface-elevated: '#262626'
+  dark-on-surface: 'rgba(255, 255, 255, 0.88)'
+  dark-on-surface-variant: 'rgba(255, 255, 255, 0.68)'
+  dark-on-surface-tertiary: 'rgba(255, 255, 255, 0.58)'
+  dark-on-surface-disabled: 'rgba(255, 255, 255, 0.30)'
+  dark-outline: '#424242'
+  dark-outline-control: '#8C8C8C'
+  dark-outline-variant: '#303030'
+  dark-ai-accent: '#B37FEB'
+  dark-ai-accent-container: '#22123A'
+  dark-knowledge-accent: '#5CDBD3'
+  dark-knowledge-container: '#0A2A2C'
+  dark-tool-accent: '#FFB761'
+  dark-tool-container: '#2B1D0A'
+  dark-risk-container: '#2A1215'
+  dark-on-primary: '#0A0A0A'
+  dark-focus-ring: '#69B1FF'
 typography:
   display-lg:
     fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif"
@@ -304,6 +334,90 @@ components:
     rounded: '{rounded.full}'
     width: 6px
     height: 6px
+  dark-app-shell:
+    backgroundColor: '{colors.dark-surface-layout}'
+    textColor: '{colors.dark-on-surface}'
+  dark-card:
+    backgroundColor: '{colors.dark-surface}'
+    textColor: '{colors.dark-on-surface}'
+  dark-modal:
+    backgroundColor: '{colors.dark-surface-elevated}'
+    textColor: '{colors.dark-on-surface}'
+  dark-table-header:
+    backgroundColor: '{colors.dark-surface-container}'
+    textColor: '{colors.dark-on-surface}'
+  dark-tag:
+    backgroundColor: '{colors.dark-surface-container}'
+    textColor: '{colors.dark-on-surface-variant}'
+  dark-metadata:
+    backgroundColor: '{colors.dark-surface}'
+    textColor: '{colors.dark-on-surface-tertiary}'
+  dark-input-disabled:
+    backgroundColor: '{colors.dark-surface-container}'
+    textColor: '{colors.dark-on-surface-disabled}'
+  dark-button-primary:
+    backgroundColor: '{colors.dark-primary}'
+    textColor: '{colors.dark-on-primary}'
+  dark-button-primary-hover:
+    backgroundColor: '{colors.dark-primary-hover}'
+    textColor: '{colors.dark-on-primary}'
+  dark-button-primary-active:
+    backgroundColor: '{colors.dark-primary-active}'
+    textColor: '{colors.dark-on-primary}'
+  dark-button-danger:
+    backgroundColor: '{colors.dark-error}'
+    textColor: '{colors.dark-on-primary}'
+  dark-button-danger-hover:
+    backgroundColor: '{colors.dark-error-hover}'
+    textColor: '{colors.dark-on-primary}'
+  dark-input-border:
+    backgroundColor: '{colors.dark-outline-control}'
+    height: 1px
+  dark-divider:
+    backgroundColor: '{colors.dark-outline}'
+    height: 1px
+  dark-divider-subtle:
+    backgroundColor: '{colors.dark-outline-variant}'
+    height: 1px
+  dark-focus-ring:
+    backgroundColor: '{colors.dark-focus-ring}'
+    height: 2px
+  dark-badge-success:
+    backgroundColor: '{colors.dark-success}'
+    height: 6px
+  dark-badge-warning:
+    backgroundColor: '{colors.dark-warning}'
+    height: 6px
+  dark-alert-info:
+    backgroundColor: '{colors.dark-surface}'
+    textColor: '{colors.dark-info}'
+  dark-status-text-success:
+    backgroundColor: '{colors.dark-surface}'
+    textColor: '{colors.dark-success-text}'
+  dark-status-text-warning:
+    backgroundColor: '{colors.dark-surface}'
+    textColor: '{colors.dark-warning-text}'
+  dark-ai-output:
+    backgroundColor: '{colors.dark-ai-accent-container}'
+    textColor: '{colors.dark-on-surface}'
+  dark-ai-tag:
+    backgroundColor: '{colors.dark-ai-accent-container}'
+    textColor: '{colors.dark-ai-accent}'
+  dark-knowledge-source:
+    backgroundColor: '{colors.dark-knowledge-container}'
+    textColor: '{colors.dark-on-surface}'
+  dark-knowledge-tag:
+    backgroundColor: '{colors.dark-knowledge-container}'
+    textColor: '{colors.dark-knowledge-accent}'
+  dark-tool-call:
+    backgroundColor: '{colors.dark-tool-container}'
+    textColor: '{colors.dark-on-surface}'
+  dark-tool-tag:
+    backgroundColor: '{colors.dark-tool-container}'
+    textColor: '{colors.dark-tool-accent}'
+  dark-approval-gate:
+    backgroundColor: '{colors.dark-risk-container}'
+    textColor: '{colors.dark-on-surface}'
 ---
 
 # AI 基座设计规范

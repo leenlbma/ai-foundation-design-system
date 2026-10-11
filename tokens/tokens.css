@@ -88,3 +88,74 @@
   --spacing-control-height-lg: 40px;
   --spacing-focus-ring-width: 2px;
 }
+
+/* Dark mode: follows the system unless the page sets .light; add .dark to force it. */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    color-scheme: dark;
+    --color-primary: #4096FF;
+    --color-primary-hover: #69B1FF;
+    --color-primary-active: #2B85F5;
+    --color-success: #73D13D;
+    --color-success-text: #95DE64;
+    --color-warning: #FFA940;
+    --color-warning-text: #FFC069;
+    --color-error: #FF7875;
+    --color-error-hover: #FFA39E;
+    --color-info: #4096FF;
+    --color-surface: #141414;
+    --color-surface-container: #1F1F1F;
+    --color-surface-layout: #0D0D0D;
+    --color-surface-elevated: #262626;
+    --color-on-surface: rgba(255, 255, 255, 0.88);
+    --color-on-surface-variant: rgba(255, 255, 255, 0.68);
+    --color-on-surface-tertiary: rgba(255, 255, 255, 0.58);
+    --color-on-surface-disabled: rgba(255, 255, 255, 0.30);
+    --color-outline: #424242;
+    --color-outline-control: #8C8C8C;
+    --color-outline-variant: #303030;
+    --color-ai-accent: #B37FEB;
+    --color-ai-accent-container: #22123A;
+    --color-knowledge-accent: #5CDBD3;
+    --color-knowledge-container: #0A2A2C;
+    --color-tool-accent: #FFB761;
+    --color-tool-container: #2B1D0A;
+    --color-risk-container: #2A1215;
+    --color-on-primary: #0A0A0A;
+    --color-focus-ring: #69B1FF;
+  }
+}
+
+.dark {
+  color-scheme: dark;
+  --color-primary: #4096FF;
+  --color-primary-hover: #69B1FF;
+  --color-primary-active: #2B85F5;
+  --color-success: #73D13D;
+  --color-success-text: #95DE64;
+  --color-warning: #FFA940;
+  --color-warning-text: #FFC069;
+  --color-error: #FF7875;
+  --color-error-hover: #FFA39E;
+  --color-info: #4096FF;
+  --color-surface: #141414;
+  --color-surface-container: #1F1F1F;
+  --color-surface-layout: #0D0D0D;
+  --color-surface-elevated: #262626;
+  --color-on-surface: rgba(255, 255, 255, 0.88);
+  --color-on-surface-variant: rgba(255, 255, 255, 0.68);
+  --color-on-surface-tertiary: rgba(255, 255, 255, 0.58);
+  --color-on-surface-disabled: rgba(255, 255, 255, 0.30);
+  --color-outline: #424242;
+  --color-outline-control: #8C8C8C;
+  --color-outline-variant: #303030;
+  --color-ai-accent: #B37FEB;
+  --color-ai-accent-container: #22123A;
+  --color-knowledge-accent: #5CDBD3;
+  --color-knowledge-container: #0A2A2C;
+  --color-tool-accent: #FFB761;
+  --color-tool-container: #2B1D0A;
+  --color-risk-container: #2A1215;
+  --color-on-primary: #0A0A0A;
+  --color-focus-ring: #69B1FF;
+}
