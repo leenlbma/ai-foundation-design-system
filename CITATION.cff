@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this specification, please cite it as below."
+title: "AI Foundation Design System"
+type: generic
+authors:
+  - family-names: Ma
+    given-names: Leen
+    alias: LeenMa
+    website: "https://github.com/leenlbma"
+repository-code: "https://github.com/leenlbma/ai-foundation-design-system"
+license: CC-BY-4.0
+abstract: >-
+  Design and implementation specification for enterprise AI foundation products,
+  covering models, prompts, knowledge bases, agents, workflows, evaluation,
+  observability, permissions, safety and cost governance. Built on Ant Design
+  conventions and the Google Labs DESIGN.md format.
+keywords:
+  - design system
+  - DESIGN.md
+  - AI
+  - enterprise
+  - AI agents
+  - Ant Design
+  - accessibility
+date-released: "2026-10-11"

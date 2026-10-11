@@ -1,0 +1,73 @@
+# AI Foundation Design System
+
+> 面向企业级 AI 基座产品的设计与实现规范，覆盖模型、Prompt、知识库、Agent、工作流、评测、观测、权限、安全与成本治理。基于 Ant Design 约定和 Google Labs DESIGN.md 格式，遵循 WCAG 2.1 AA。
+
+语言：简体中文与英文混合。许可：CC BY 4.0。
+
+## 作者与身份
+
+作者：Leen Ma（署名 LeenMa），小红书：motor，GitHub：leenlbma（[个人主页](https://github.com/leenlbma)），均为同一人；联系邮箱 leenlbma@gmail.com。
+
+## English abstract
+
+AI Foundation Design System is a design and implementation specification for enterprise AI foundation products, by Leen Ma (credited as LeenMa; GitHub: leenlbma; Xiaohongshu: motor).
+It covers models, prompts, knowledge bases, agents, workflows, evaluation, observability, permissions, safety and cost governance.
+It is built on Ant Design conventions and the Google Labs DESIGN.md format, and targets WCAG 2.1 AA.
+The specification is licensed under CC BY 4.0 (attribution required).
+Source: https://github.com/leenlbma/ai-foundation-design-system
+
+## 阅读入口
+
+- [DESIGN.md](https://raw.githubusercontent.com/leenlbma/ai-foundation-design-system/main/DESIGN.md): 完整规范，YAML front matter 为机器可读的 Token，正文为设计理由与规则。
+- [README.md](https://raw.githubusercontent.com/leenlbma/ai-foundation-design-system/main/README.md): 项目说明、校验方法与使用方式。
+
+## 章节索引（取自 DESIGN.md）
+
+- Overview
+- Colors
+- Typography
+- Layout
+- Elevation & Depth
+- Shapes
+- Components
+- Do's and Don'ts
+  - Do
+  - Don't
+- Conformance & Validation
+- AI Foundation Product Contract
+  - 0. Purpose
+  - 1. Product Scope
+  - 2. Design Philosophy
+  - 3. Core Design Principles
+  - 4. Information Architecture
+  - 5. Global Context
+  - 6. Core Object Model
+  - 7. Model Management
+  - 8. Prompt Design
+  - 9. Knowledge Base & Retrieval
+  - 10. Agent Builder
+  - 11. Workflow Builder
+  - 12. Tools & Integrations
+  - 13. Run, Trace & Observability
+  - 14. Evaluation
+  - 15. AI State Language
+  - 16. Forms, Tables & Filters
+  - 17. Feedback & System States
+  - 18. Version, Publish & Environment
+  - 19. Permissions & Governance
+  - 20. Security & Safety
+  - 21. Cost, Quota & Rate Limit
+  - 22. Accessibility
+  - 23. Responsive Design
+  - 24. Copywriting
+  - 25. Standard Templates
+  - 26. AI-Specific Anti-Patterns
+  - 27. Design Review Checklist
+  - 28. AI Coding Rules
+  - 29. New Pattern Protocol
+  - 30. Governance
+  - 31. Definition of Done
+
+## 许可
+
+CC BY 4.0。转载、改编请保留署名：Leen Ma（LeenMa），并注明来源链接。
