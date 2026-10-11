@@ -56,17 +56,19 @@ npx @google/design.md diff DESIGN.previous.md DESIGN.md
 
 ## 导出与使用
 
-`tokens/` 目录由官方 CLI 从 `DESIGN.md` 生成，请勿手工修改：
+`tokens/` 目录由 `DESIGN.md` 生成，请勿手工修改：
 
 ```bash
-npx -y @google/design.md export DESIGN.md --format css-tailwind > tokens/tokens.css
-npx -y @google/design.md export DESIGN.md --format dtcg > tokens/tokens.json
+node tokens/build-dark.mjs            # 写入 tokens/tokens.css 与 tokens/tokens.json
+node tokens/build-dark.mjs --report   # 同时打印深色色表与全部对比度
 ```
 
-- `tokens/tokens.css`：Tailwind v4 `@theme` CSS 变量。
-- `tokens/tokens.json`：W3C DTCG 格式设计令牌。
+脚本调用官方 CLI 导出浅色 Token，原样保留，再把 `dark-*` 颜色导出为深色变量并校验对比度。
 
-修改 `DESIGN.md` 后必须重新导出；CI 会比对导出文件，不一致则失败。
+- `tokens/tokens.css`：Tailwind v4 `@theme` 浅色变量；深色变量位于 `.dark` 与 `@media (prefers-color-scheme: dark)`（`:root:not(.light)`）。
+- `tokens/tokens.json`：W3C DTCG 格式；深色值在顶层 `color-dark` 组。
+
+修改 `DESIGN.md` 后必须重新导出；CI 会重新生成并比对，同时检查深色对比度，不一致或不达标则失败。
 
 ## 维护原则
 

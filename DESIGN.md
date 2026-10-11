@@ -453,6 +453,30 @@ components:
 
 主按钮使用深一级蓝色以满足小字号白字的 WCAG AA 对比度目标。若品牌主题调整主色，必须重新验证主要按钮、链接、焦点和选中状态的对比度。
 
+## Dark Mode
+
+深色模式由 `dark-*` 颜色 Token 定义，与浅色 Token 一一对应（`dark-primary` 对应 `primary`，以此类推），浅色值不受影响。官方 CLI 暂无多主题语法，因此采用命名空间表达，由 `tokens/build-dark.mjs` 导出为 `.dark` 变量组。
+
+- 原则：不是浅色反相。深色下彩色整体提亮、降低饱和压力；主按钮、危险按钮上的文字改为深色 `dark-on-primary`。
+- 层级：只用表面亮度递进表达，由低到高为 surface-layout `#0D0D0D`、surface `#141414`、surface-container `#1F1F1F`、surface-elevated `#262626`。浮层越高越亮，不使用阴影。
+- 对比度：文字对其背景至少 4.5:1；输入框边框、焦点环、状态点至少 3:1。装饰性 `outline`、`outline-variant` 与禁用文字不受此限。所有组合由 `build-dark.mjs` 计算，低于要求时 CI 失败。
+- 切换：默认跟随系统 `prefers-color-scheme`；允许用户手动覆盖，在根元素加 `.dark` 强制深色，加 `.light` 强制浅色，并持久化用户选择。
+
+| 深色文字 / 控件 | 背景 | 对比度 |
+| --- | --- | --- |
+| on-surface | surface | 14.33 |
+| on-surface-variant | surface | 8.87 |
+| on-surface-tertiary | surface-elevated | 6.06 |
+| primary（链接） | surface-elevated | 5.06 |
+| on-primary | primary | 6.62 |
+| on-primary | primary-active | 5.45 |
+| on-primary | error | 7.73 |
+| success-text / warning-text | surface-elevated | 9.30 / 9.37 |
+| ai-accent | ai-accent-container | 5.88 |
+| knowledge-accent / tool-accent | 各自 container | 9.08 / 9.51 |
+| outline-control（边框） | surface-elevated | 4.50 |
+| focus-ring | surface-elevated | 6.73 |
+
 ## Typography
 
 企业控制台默认正文为 14px / 22px。16px 用于重要正文或低密度阅读，12px 只用于标签和元信息，13px 等宽字体用于 Prompt、JSON、日志和代码。
