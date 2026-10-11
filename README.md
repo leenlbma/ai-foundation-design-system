@@ -2,6 +2,10 @@
 
 面向企业级 AI 基座产品的设计与实现规范，覆盖模型、Prompt、知识库、Agent、工作流、评测、运行观测、权限、安全和成本治理。
 
+[![Lint DESIGN.md](https://github.com/leenlbma/ai-foundation-design-system/actions/workflows/lint.yml/badge.svg)](https://github.com/leenlbma/ai-foundation-design-system/actions/workflows/lint.yml)
+
+**English summary.** AI Foundation Design System is a design and implementation specification for enterprise AI foundation products, covering models, prompts, knowledge bases, agents, workflows, evaluation, observability, permissions, security and cost governance. It is built on Ant Design conventions and the Google Labs DESIGN.md format, and targets WCAG 2.1 AA. The specification is written mostly in Chinese with English section names. It is licensed under CC BY 4.0.
+
 ## 快速访问
 
 - [在 GitHub 阅读完整 DESIGN.md](https://github.com/leenlbma/ai-foundation-design-system/blob/main/DESIGN.md)
@@ -29,7 +33,7 @@ AI 工具可以直接使用以下提示词：
 npx @google/design.md lint DESIGN.md
 ~~~
 
-当前版本校验结果：
+每次推送和 Pull Request 都由 GitHub Actions 自动运行该校验。当前版本（官方校验器输出）：
 
 - Errors: 0
 - Warnings: 0
@@ -56,3 +60,13 @@ npx @google/design.md diff DESIGN.previous.md DESIGN.md
 - Markdown 正文解释设计理由、使用边界与验收标准。
 - 新增页面优先复用现有 Component、Pattern 和 Token。
 - 例外必须记录原因、Owner、风险、缓解措施和过期时间。
+
+## 许可
+
+本项目采用 [CC BY 4.0](LICENSE) 许可：可自由使用、转载和改编，包括商业用途，但需要署名并注明修改。
+
+署名示例：
+
+> AI Foundation Design System by Leen Ma (LeenMa), https://github.com/leenlbma/ai-foundation-design-system , licensed under CC BY 4.0.
+
+作者：Leen Ma（署名 LeenMa）。小红书：motor，GitHub：leenlbma，均为同一人。邮箱：leenlbma@gmail.com
