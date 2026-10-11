@@ -1,6 +1,7 @@
 ---
 version: alpha
 name: AI Foundation Design System
+license: CC-BY-4.0
 description: Enterprise AI foundation design system built on Ant Design conventions, optimized for model, knowledge, agent, workflow, evaluation, observability, and governance products.
 colors:
   primary: '#0958D9'
@@ -690,7 +691,7 @@ AI 基座必须持续展示关键上下文，避免用户在错误环境或错�
 
 ---
 
-### 9. Core Object Model
+### 6. Core Object Model
 
 AI 基座中的核心对象应共享统一的生命周期：
 
@@ -727,7 +728,7 @@ Permissions
 
 ---
 
-### 10. Model Management
+### 7. Model Management
 
 模型列表至少展示：
 
@@ -770,7 +771,7 @@ Permissions
 
 ---
 
-### 11. Prompt Design
+### 8. Prompt Design
 
 Prompt 编辑器必须支持：
 
@@ -801,7 +802,7 @@ Prompt 与模型参数必须分区，避免混在同一表单中。
 
 ---
 
-### 12. Knowledge Base & Retrieval
+### 9. Knowledge Base & Retrieval
 
 知识库详情必须区分：
 
@@ -838,7 +839,7 @@ AI 输出引用知识库内容时，必须允许用户查看来源与原文片�
 
 ---
 
-### 13. Agent Builder
+### 10. Agent Builder
 
 Agent 创建流程推荐：
 
@@ -877,7 +878,7 @@ Agent Builder 必须持续展示：
 
 ---
 
-### 14. Workflow Builder
+### 11. Workflow Builder
 
 Workflow 节点至少分为：
 
@@ -917,7 +918,7 @@ Workflow 节点至少分为：
 
 ---
 
-### 15. Tools & Integrations
+### 12. Tools & Integrations
 
 Tool 详情必须展示：
 
@@ -948,7 +949,7 @@ Tool Name
 
 ---
 
-### 16. Run, Trace & Observability
+### 13. Run, Trace & Observability
 
 运行详情必须回答：
 
@@ -984,7 +985,7 @@ Run
 
 ---
 
-### 17. Evaluation
+### 14. Evaluation
 
 评测对象包括：
 
@@ -1025,7 +1026,7 @@ Select Target
 
 ---
 
-### 18. AI State Language
+### 15. AI State Language
 
 统一运行状态：
 
@@ -1066,9 +1067,9 @@ Understanding request
 
 ---
 
-### 19. Forms, Tables & Filters
+### 16. Forms, Tables & Filters
 
-#### 19.1 Forms
+#### 16.1 Forms
 
 推荐结构：
 
@@ -1080,7 +1081,7 @@ Label 必须始终可见，不能只用 Placeholder 代替。
 
 超过 8 个字段时，使用 Section、Step 或 Progressive Disclosure。
 
-#### 19.2 Tables
+#### 16.2 Tables
 
 - 文字左对齐
 - 数字右对齐
@@ -1099,7 +1100,7 @@ Label 必须始终可见，不能只用 Placeholder 代替。
 - Bulk Action
 - Sticky Header
 
-#### 19.3 Filters
+#### 16.3 Filters
 
 标准结构：
 
@@ -1109,22 +1110,22 @@ Search | Status | Owner | Environment | Date | More Filters | Reset
 
 ---
 
-### 20. Feedback & System States
+### 17. Feedback & System States
 
-#### 20.1 Empty State
+#### 17.1 Empty State
 
 必须说明：
 
 1. 为什么这里是空的？
 2. 用户下一步可以做什么？
 
-#### 20.2 Loading
+#### 17.2 Loading
 
 短加载使用 Skeleton 或局部 Spinner。
 
 长任务展示阶段、耗时和取消入口。
 
-#### 20.3 Error
+#### 17.3 Error
 
 错误信息必须包含：
 
@@ -1136,7 +1137,7 @@ What can I do
 
 应保留 Error ID 或 Run ID，便于排障。
 
-#### 20.4 Partial Success
+#### 17.4 Partial Success
 
 批处理或多步骤任务必须明确区分：
 
@@ -1146,7 +1147,7 @@ What can I do
 - 失败原因
 - 重试范围
 
-#### 20.5 Toast
+#### 17.5 Toast
 
 Toast 只表达短暂反馈，例如 Saved、Copied、Created、Updated。
 
@@ -1154,7 +1155,7 @@ Toast 只表达短暂反馈，例如 Saved、Copied、Created、Updated。
 
 ---
 
-### 21. Version, Publish & Environment
+### 18. Version, Publish & Environment
 
 Draft 与 Published 必须明确区分。
 
@@ -1184,7 +1185,7 @@ Save Draft
 
 ---
 
-### 22. Permissions & Governance
+### 19. Permissions & Governance
 
 默认采用 RBAC，并在需要时结合资源级权限。
 
@@ -1216,7 +1217,7 @@ Save Draft
 
 ---
 
-### 23. Security & Safety
+### 20. Security & Safety
 
 AI 基座默认考虑：
 
@@ -1255,7 +1256,7 @@ AI 内容必须区分：
 
 ---
 
-### 24. Cost, Quota & Rate Limit
+### 21. Cost, Quota & Rate Limit
 
 成本信息应在决策发生的位置出现，而不是只放在账单页面。
 
@@ -1275,7 +1276,7 @@ AI 内容必须区分：
 
 ---
 
-### 25. Accessibility
+### 22. Accessibility
 
 最低标准：WCAG 2.1 AA。
 
@@ -1292,7 +1293,7 @@ AI 内容必须区分：
 
 ---
 
-### 26. Responsive Design
+### 23. Responsive Design
 
 优先级：
 
@@ -1314,7 +1315,7 @@ AI 基座的复杂构建与调试能力不强制在移动端保持完整功能�
 
 ---
 
-### 27. Copywriting
+### 24. Copywriting
 
 文案原则：
 
@@ -1344,9 +1345,9 @@ AI 基座的复杂构建与调试能力不强制在移动端保持完整功能�
 
 ---
 
-### 29. Standard Templates
+### 25. Standard Templates
 
-#### 29.1 Resource List
+#### 25.1 Resource List
 
 <Page>
   <PageHeader />
@@ -1358,7 +1359,7 @@ AI 基座的复杂构建与调试能力不强制在移动端保持完整功能�
   <ResourceTable />
 </Page>
 
-#### 29.2 Resource Detail
+#### 25.2 Resource Detail
 
 <PageHeader />
 <StatusAndVersion />
@@ -1373,7 +1374,7 @@ AI 基座的复杂构建与调试能力不强制在移动端保持完整功能�
 </Tabs>
 <Content />
 
-#### 29.3 AI Builder
+#### 25.3 AI Builder
 
 <Builder>
   <ResourcePanel />
@@ -1382,7 +1383,7 @@ AI 基座的复杂构建与调试能力不强制在移动端保持完整功能�
   <TestAndRunPanel />
 </Builder>
 
-#### 29.4 Run Detail
+#### 25.4 Run Detail
 
 <RunHeader />
 <MetricSummary />
@@ -1393,7 +1394,7 @@ AI 基座的复杂构建与调试能力不强制在移动端保持完整功能�
 
 ---
 
-### 30. AI-Specific Anti-Patterns
+### 26. AI-Specific Anti-Patterns
 
 #### Visual
 
@@ -1443,7 +1444,7 @@ AI 基座的复杂构建与调试能力不强制在移动端保持完整功能�
 
 ---
 
-### 31. Design Review Checklist
+### 27. Design Review Checklist
 
 ##### Product
 
@@ -1495,7 +1496,7 @@ AI 基座的复杂构建与调试能力不强制在移动端保持完整功能�
 
 ---
 
-### 32. AI Coding Rules
+### 28. AI Coding Rules
 
 所有 Coding Agent / Vibe Coding 在生成 AI 基座 UI 前必须读取 DESIGN.md。
 
@@ -1521,7 +1522,7 @@ AI 基座的复杂构建与调试能力不强制在移动端保持完整功能�
 
 ---
 
-### 33. New Pattern Protocol
+### 29. New Pattern Protocol
 
 如果必须增加新组件或新交互模式，需要回答：
 
@@ -1571,7 +1572,7 @@ DESIGN.md
 
 ---
 
-### 34. Governance
+### 30. Governance
 
 Design System Owner：
 
@@ -1598,7 +1599,7 @@ Product Design + AI Platform Engineering
 
 ---
 
-### 35. Definition of Done
+### 31. Definition of Done
 
 一个 AI 基座功能只有同时满足：
 
