@@ -12,6 +12,7 @@ colors:
   warning: '#D46B08'
   warning-text: '#AD5A00'
   error: '#CF1322'
+  error-hover: '#A8071A'
   info: '#0958D9'
   surface: '#FFFFFF'
   surface-container: '#FAFAFA'
@@ -32,6 +33,7 @@ colors:
   tool-container: '#FFF7E6'
   risk-container: '#FFF1F0'
   on-primary: '#FFFFFF'
+  focus-ring: '#1677FF'
 typography:
   display-lg:
     fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif"
@@ -102,6 +104,7 @@ spacing:
   section: 40px
   control-height: 32px
   control-height-lg: 40px
+  focus-ring-width: 2px
 components:
   button-primary:
     backgroundColor: '{colors.primary}'
@@ -258,6 +261,49 @@ components:
     backgroundColor: '{colors.surface}'
     textColor: '{colors.warning-text}'
     typography: '{typography.body-md}'
+  button-danger:
+    backgroundColor: '{colors.error}'
+    textColor: '{colors.on-primary}'
+    typography: '{typography.body-md}'
+    rounded: '{rounded.DEFAULT}'
+    height: 32px
+    padding: 0 16px
+  button-danger-hover:
+    backgroundColor: '{colors.error-hover}'
+    textColor: '{colors.on-primary}'
+  button-danger-disabled:
+    backgroundColor: '{colors.surface-container}'
+    textColor: '{colors.on-surface-disabled}'
+  button-disabled:
+    backgroundColor: '{colors.surface-container}'
+    textColor: '{colors.on-surface-disabled}'
+    typography: '{typography.body-md}'
+    rounded: '{rounded.DEFAULT}'
+    height: 32px
+    padding: 0 16px
+  focus-ring:
+    backgroundColor: '{colors.focus-ring}'
+    height: '{spacing.focus-ring-width}'
+  input-border-hover:
+    backgroundColor: '{colors.primary-hover}'
+    height: 1px
+  input-border-focus:
+    backgroundColor: '{colors.primary}'
+    height: '{spacing.focus-ring-width}'
+  input-border-error:
+    backgroundColor: '{colors.error}'
+    height: 1px
+  alert-error:
+    backgroundColor: '{colors.risk-container}'
+    textColor: '{colors.on-surface}'
+    typography: '{typography.body-md}'
+    rounded: '{rounded.lg}'
+    padding: 8px 12px
+  badge-status-error:
+    backgroundColor: '{colors.error}'
+    rounded: '{rounded.full}'
+    width: 6px
+    height: 6px
 ---
 
 # AI 基座设计规范
@@ -383,6 +429,10 @@ App Shell
 - Tag：表达类别或弱状态；关键错误和风险使用 Alert、Badge 加文本或 Result。
 - Tooltip：补充短说明，不承载关键操作和长篇帮助。
 - Tabs：同一层级内容切换，不作为跨模块导航。
+- Danger Button：使用 button-danger 及 hover、disabled 变体；禁用态统一使用 button-disabled 配色。
+- Input 状态：边框依次使用 input-border、input-border-hover、input-border-focus、input-border-error。
+- Focus：所有可交互元素聚焦时显示 focus-ring，宽度取 focus-ring-width。
+- Alert 与 Badge 的错误态使用 alert-error 和 badge-status-error，必须同时有文本。
 
 AI 语义组件约束：
 
