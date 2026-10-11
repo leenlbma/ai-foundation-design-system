@@ -5,10 +5,12 @@ license: CC-BY-4.0
 description: Enterprise AI foundation design system built on Ant Design conventions, optimized for model, knowledge, agent, workflow, evaluation, observability, and governance products.
 colors:
   primary: '#0958D9'
-  primary-hover: '#1677FF'
+  primary-hover: '#1265E0'
   primary-active: '#003EB3'
   success: '#389E0D'
+  success-text: '#237804'
   warning: '#D46B08'
+  warning-text: '#AD5A00'
   error: '#CF1322'
   info: '#0958D9'
   surface: '#FFFFFF'
@@ -17,9 +19,10 @@ colors:
   surface-elevated: '#FFFFFF'
   on-surface: 'rgba(0, 0, 0, 0.88)'
   on-surface-variant: 'rgba(0, 0, 0, 0.65)'
-  on-surface-tertiary: 'rgba(0, 0, 0, 0.45)'
+  on-surface-tertiary: 'rgba(0, 0, 0, 0.58)'
   on-surface-disabled: 'rgba(0, 0, 0, 0.25)'
   outline: '#D9D9D9'
+  outline-control: '#8C8C8C'
   outline-variant: '#F0F0F0'
   ai-accent: '#531DAB'
   ai-accent-container: '#F9F0FF'
@@ -244,6 +247,17 @@ components:
     rounded: '{rounded.full}'
     width: 6px
     height: 6px
+  input-border:
+    backgroundColor: '{colors.outline-control}'
+    height: 1px
+  status-text-success:
+    backgroundColor: '{colors.surface}'
+    textColor: '{colors.success-text}'
+    typography: '{typography.body-md}'
+  status-text-warning:
+    backgroundColor: '{colors.surface}'
+    textColor: '{colors.warning-text}'
+    typography: '{typography.body-md}'
 ---
 
 # AI 基座设计规范
@@ -269,6 +283,7 @@ components:
 
 - primary 用于单个区域内唯一的主要操作、链接、焦点和选中状态。
 - success、warning、error、info 只表达对应语义，不作为装饰色。
+- 文字用 *-text，图标和圆点用原色。
 - surface-layout、surface、surface-container、surface-elevated 构成页面、内容、次级容器和浮层的表面层级。
 - on-surface 系列承载主文字、辅助信息、说明和禁用状态。
 - ai-accent、knowledge-accent、tool-accent 只用于对象类型的轻量辅助识别，不代替状态色。
