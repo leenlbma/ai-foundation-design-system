@@ -21,3 +21,6 @@ jobs:
           node tokens/build-dark.mjs --out /tmp/tokens
           diff -u tokens/tokens.css /tmp/tokens/tokens.css
           diff -u tokens/tokens.json /tmp/tokens/tokens.json
+          node tokens/antd-theme.mjs --in /tmp/tokens --out /tmp/tokens
+          diff -u tokens/antd-theme.json /tmp/tokens/antd-theme.json
+          diff -u tokens/antd-theme.js /tmp/tokens/antd-theme.js

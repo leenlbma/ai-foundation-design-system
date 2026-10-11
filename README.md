@@ -68,7 +68,30 @@ node tokens/build-dark.mjs --report   # 同时打印深色色表与全部对比�
 - `tokens/tokens.css`：Tailwind v4 `@theme` 浅色变量；深色变量位于 `.dark` 与 `@media (prefers-color-scheme: dark)`（`:root:not(.light)`）。
 - `tokens/tokens.json`：W3C DTCG 格式；深色值在顶层 `color-dark` 组。
 
-修改 `DESIGN.md` 后必须重新导出；CI 会重新生成并比对，同时检查深色对比度，不一致或不达标则失败。
+修改 `DESIGN.md` 后必须重新导出（先运行 `build-dark.mjs`，再运行 `antd-theme.mjs`）；CI 会重新生成并比对，同时检查深色对比度，不一致或不达标则失败。
+
+## Ant Design 主题
+
+`tokens/antd-theme.mjs` 读取 `tokens/tokens.json`，生成 antd v5 的 ThemeConfig：
+
+~~~bash
+node tokens/antd-theme.mjs   # 写入 tokens/antd-theme.json 与 tokens/antd-theme.js
+~~~
+
+~~~jsx
+import { ConfigProvider } from 'antd';
+import { getAntdTheme } from './tokens/antd-theme.js';
+
+<ConfigProvider theme={getAntdTheme(isDark ? 'dark' : 'light')}>
+  <App />
+</ConfigProvider>
+~~~
+
+- 浅色是一个 `token` 对象；深色使用 `theme.darkAlgorithm`，再用第二个算法把已映射的 token 钉回 DESIGN.md 的深色值（否则 antd 会重新推导主色、错误色等种子色）。
+- 已映射：colorPrimary（含 Hover、Active）、colorSuccess、colorWarning、colorError（含 Hover、Bg）、colorInfo、colorText、colorTextSecondary、colorTextTertiary、colorTextQuaternary、colorTextDisabled、colorTextLightSolid、colorBgLayout、colorBgContainer、colorBgElevated、colorBgMask、colorFillAlter、colorBorder、colorBorderSecondary、colorSplit、controlOutline、阴影、圆角、字号、字体、控件高度、焦点环宽度。
+- 没有对应：`success-text`、`warning-text`、ai、knowledge、tool 三组强调色及容器色、`overlay-edge`、`chart-*`。这些请直接使用 `tokens.css` 的 CSS 变量。
+- 近似映射：`controlOutline` 是 antd 的半透明光晕，取 focus-ring 的 20% 透明度；实心 2px 焦点环仍需 CSS。完整清单见 `antd-theme.json` 的 `unmapped`。
+- `antd-theme.js` 是 ESM，需要项目已安装 antd v5。
 
 ## 维护原则
 
