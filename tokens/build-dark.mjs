@@ -34,6 +34,12 @@ const L = (c) => { const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 
 const ratio = (fg, bg, t) => { const a = L(flat(t[fg], t[bg])), b = L(t[bg].rgb); return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05); };
 const parsed = (o) => Object.fromEntries(Object.entries(o).map(([k, v]) => [k, parse(v)]));
 const P = { dark: parsed(dark), light: parsed(light) };
+// derived (flattened) tokens used by overlay checks
+for (const th of ['light', 'dark']) {
+  const T = P[th], sc = th === 'dark' ? 'dark' : 'light';
+  T['scrimmed-layout'] = { rgb: flat(T.scrim, T['surface-layout']), a: 1 };
+  T['edge-on-elevated'] = { rgb: flat(T['overlay-edge'], T['surface-elevated']), a: 1 };
+}
 const surfaces = ['surface-layout', 'surface', 'surface-container', 'surface-elevated'];
 const checks = []; // [label, fg, bg, min]
 for (const t of ['on-surface', 'on-surface-variant', 'on-surface-tertiary', 'primary', 'primary-hover', 'success-text', 'warning-text', 'error', 'ai-accent', 'knowledge-accent', 'tool-accent'])
@@ -44,7 +50,11 @@ for (const [c, f] of [['ai-accent-container', 'ai-accent'], ['knowledge-containe
   checks.push([`text ${f} on ${c}`, f, c, 4.5]);
 for (const s of surfaces) for (const t of ['outline-control', 'focus-ring', 'success', 'warning', 'error']) checks.push([`non-text ${t} on ${s}`, t, s, 3]);
 for (const s of ['surface', 'surface-container']) checks.push([`non-text primary on ${s}`, 'primary', s, 3]);
-const rows = checks.map(([l, f, b, min]) => ({ l, r: ratio(f, b, P.dark), min }));
+const extra = []; // [label, fg, bg, min, theme]
+extra.push(['modal surface vs scrimmed page', 'surface-elevated', 'scrimmed-layout', 3, 'light'],
+  ['modal edge vs scrimmed page', 'edge-on-elevated', 'scrimmed-layout', 2, 'dark']);
+const rows = [...checks.map(([l, f, b, min]) => ({ l, r: ratio(f, b, P.dark), min })),
+  ...extra.map(([l, f, b, min, th]) => ({ l: `${th} ${l}`, r: ratio(f, b, P[th]), min }))];
 const bad = rows.filter((x) => x.r < x.min);
 if (args.includes('--report')) {
   console.log('| token | light | dark | contrast vs dark surface (on-surface-* / accents) |');
@@ -67,6 +77,13 @@ css = css.replace(/\n*$/, '\n') + `
     color-scheme: dark;
 ${body('    ')}
   }
+}
+
+/* Elevation: sizes are shared, colors switch with the theme through --color-shadow-color. */
+:root {
+  --shadow-level-1: 0 2px 8px 0 var(--color-shadow-color);
+  --shadow-level-2: 0 6px 16px 0 var(--color-shadow-color);
+  --shadow-level-3: 0 9px 28px 8px var(--color-shadow-color);
 }
 
 .dark {

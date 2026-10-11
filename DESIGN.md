@@ -34,6 +34,9 @@ colors:
   risk-container: '#FFF1F0'
   on-primary: '#FFFFFF'
   focus-ring: '#1677FF'
+  scrim: 'rgba(0, 0, 0, 0.45)'
+  overlay-edge: 'rgba(0, 0, 0, 0.08)'
+  shadow-color: 'rgba(0, 0, 0, 0.15)'
   dark-primary: '#4096FF'
   dark-primary-hover: '#69B1FF'
   dark-primary-active: '#2B85F5'
@@ -64,6 +67,9 @@ colors:
   dark-risk-container: '#2A1215'
   dark-on-primary: '#0A0A0A'
   dark-focus-ring: '#69B1FF'
+  dark-scrim: 'rgba(0, 0, 0, 0.65)'
+  dark-overlay-edge: 'rgba(255, 255, 255, 0.16)'
+  dark-shadow-color: 'rgba(0, 0, 0, 0.60)'
 typography:
   display-lg:
     fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif"
@@ -418,6 +424,20 @@ components:
   dark-approval-gate:
     backgroundColor: '{colors.dark-risk-container}'
     textColor: '{colors.dark-on-surface}'
+  scrim:
+    backgroundColor: '{colors.scrim}'
+  overlay-border:
+    backgroundColor: '{colors.overlay-edge}'
+    height: 1px
+  popover-shadow:
+    backgroundColor: '{colors.shadow-color}'
+  dark-scrim:
+    backgroundColor: '{colors.dark-scrim}'
+  dark-overlay-border:
+    backgroundColor: '{colors.dark-overlay-edge}'
+    height: 1px
+  dark-popover-shadow:
+    backgroundColor: '{colors.dark-shadow-color}'
 ---
 
 # AI 基座设计规范
@@ -476,6 +496,13 @@ components:
 | knowledge-accent / tool-accent | 各自 container | 9.08 / 9.51 |
 | outline-control（边框） | surface-elevated | 4.50 |
 | focus-ring | surface-elevated | 6.73 |
+
+### 深色阴影与遮罩
+
+- 遮罩（scrim）：Modal、Drawer 背后使用 `scrim`（浅色 黑 45%）和 `dark-scrim`（深色 黑 65%）。深色背景本身接近黑色，遮罩要更重才能把弹层与页面分开。
+- 浮层边缘：深色下阴影几乎不可见，Dropdown、Popover、Modal、Drawer 加 1px `dark-overlay-edge`（白 16%）高亮边，并使用 `surface-elevated`。浅色使用 `overlay-edge`（黑 8%）作为可选细边，主要靠阴影。
+- 阴影：浅色已有 Level 1 到 3 阴影，颜色统一为 `shadow-color`（黑 15%）。深色用 `dark-shadow-color`（黑 60%），只作辅助，不能代替亮度和高亮边。阴影尺寸导出为 `--shadow-level-1/2/3`，随主题自动切换颜色。
+- 对比度：浅色下弹层表面对遮罩后的页面至少 3:1；深色下弹层高亮边对遮罩后的页面至少 2:1。由 `build-dark.mjs` 计算，低于要求 CI 失败。
 
 ## Typography
 

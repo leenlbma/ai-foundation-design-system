@@ -29,6 +29,9 @@
   --color-risk-container: #fff1f0;
   --color-on-primary: #ffffff;
   --color-focus-ring: #1677ff;
+  --color-scrim: #00000073;
+  --color-overlay-edge: #00000014;
+  --color-shadow-color: #00000026;
   --font-display-lg: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif";
   --font-headline-lg: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif";
   --font-headline-md: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif";
@@ -123,7 +126,17 @@
     --color-risk-container: #2A1215;
     --color-on-primary: #0A0A0A;
     --color-focus-ring: #69B1FF;
+    --color-scrim: rgba(0, 0, 0, 0.65);
+    --color-overlay-edge: rgba(255, 255, 255, 0.16);
+    --color-shadow-color: rgba(0, 0, 0, 0.60);
   }
+}
+
+/* Elevation: sizes are shared, colors switch with the theme through --color-shadow-color. */
+:root {
+  --shadow-level-1: 0 2px 8px 0 var(--color-shadow-color);
+  --shadow-level-2: 0 6px 16px 0 var(--color-shadow-color);
+  --shadow-level-3: 0 9px 28px 8px var(--color-shadow-color);
 }
 
 .dark {
@@ -158,4 +171,7 @@
   --color-risk-container: #2A1215;
   --color-on-primary: #0A0A0A;
   --color-focus-ring: #69B1FF;
+  --color-scrim: rgba(0, 0, 0, 0.65);
+  --color-overlay-edge: rgba(255, 255, 255, 0.16);
+  --color-shadow-color: rgba(0, 0, 0, 0.60);
 }
