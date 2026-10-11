@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>资源列表 · AI Foundation Design System 示例</title>
+<style>
+/* tokens:start (generated from tokens/tokens.css by examples/build-example.mjs; do not edit) */
+/* tokens:end */
+html { background: var(--color-surface-layout); }
+body { margin: 0; font-family: var(--font-body-md); font-size: 14px; line-height: 22px; color: var(--color-on-surface); background: var(--color-surface-layout); }
+* { box-sizing: border-box; }
+:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+.header { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding: 12px 24px; background: var(--color-surface); border-bottom: 1px solid var(--color-outline-variant); }
+.header h1 { font-size: 16px; line-height: 24px; margin: 0; font-weight: 600; }
+.header .sp { flex: 1; }
+.seg { display: inline-flex; border: 1px solid var(--color-outline-control); border-radius: 6px; overflow: hidden; }
+.seg button { border: 0; border-right: 1px solid var(--color-outline-control); background: var(--color-surface); color: var(--color-on-surface); height: 32px; padding: 0 12px; font: inherit; cursor: pointer; }
+.seg button:last-child { border-right: 0; }
+.seg button[aria-pressed="true"] { background: var(--color-primary); color: var(--color-on-primary); }
+.seg button:focus-visible { outline-offset: -2px; }
+main { max-width: 1080px; margin: 0 auto; padding: 24px 16px 48px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.card { background: var(--color-surface); border: 1px solid var(--color-outline-variant); border-radius: 8px; padding: 24px; }
+.card h2 { font-size: 16px; line-height: 24px; margin: 0 0 12px; font-weight: 600; }
+.muted { color: var(--color-on-surface-tertiary); font-size: 12px; line-height: 20px; }
+.toolbar { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; }
+.field { display: grid; gap: 4px; }
+.field label { font-size: 12px; color: var(--color-on-surface-variant); }
+input, select { height: 32px; padding: 4px 12px; font: inherit; color: var(--color-on-surface); background: var(--color-surface); border: 1px solid var(--color-outline-control); border-radius: 6px; min-width: 0; }
+input:hover, select:hover { border-color: var(--color-primary-hover); }
+input:focus-visible, select:focus-visible { border-color: var(--color-primary); outline: 2px solid var(--color-focus-ring); outline-offset: 0; }
+input[aria-invalid="true"] { border-color: var(--color-error); }
+input:disabled { background: var(--color-surface-container); color: var(--color-on-surface-disabled); border-color: var(--color-outline); cursor: not-allowed; }
+.err { color: var(--color-error); font-size: 12px; line-height: 20px; }
+.btn { height: 32px; padding: 0 16px; font: inherit; border-radius: 6px; border: 1px solid var(--color-outline-control); background: var(--color-surface); color: var(--color-on-surface); cursor: pointer; }
+.btn.primary { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-on-primary); }
+.btn.primary:hover { background: var(--color-primary-hover); border-color: var(--color-primary-hover); }
+.btn.primary:active { background: var(--color-primary-active); }
+.btn.danger { background: var(--color-error); border-color: var(--color-error); color: var(--color-on-primary); }
+.btn.danger:hover { background: var(--color-error-hover); border-color: var(--color-error-hover); }
+.btn:disabled { background: var(--color-surface-container); border-color: var(--color-outline); color: var(--color-on-surface-disabled); cursor: not-allowed; }
+.table-wrap { overflow-x: auto; margin-top: 16px; border: 1px solid var(--color-outline-variant); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; min-width: 640px; }
+th { background: var(--color-surface-container); text-align: left; font-weight: 600; padding: 12px 16px; }
+td { padding: 12px 16px; height: 48px; border-top: 1px solid var(--color-outline-variant); }
+th.num, td.num { text-align: right; }
+td.act { text-align: right; white-space: nowrap; }
+.status { display: inline-flex; align-items: center; gap: 6px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.s-ok { color: var(--color-success-text); } .s-ok .dot { background: var(--color-success); }
+.s-warn { color: var(--color-warning-text); } .s-warn .dot { background: var(--color-warning); }
+.s-err { color: var(--color-error); }
+.s-off { color: var(--color-on-surface-tertiary); } .s-off .dot { background: var(--color-on-surface-disabled); }
+.tag { display: inline-block; padding: 0 8px; border-radius: 4px; font-size: 12px; line-height: 20px; }
+.tag.ai { background: var(--color-ai-accent-container); color: var(--color-ai-accent); }
+.tag.kb { background: var(--color-knowledge-container); color: var(--color-knowledge-accent); }
+.tag.tool { background: var(--color-tool-container); color: var(--color-tool-accent); }
+.ai-output { background: var(--color-ai-accent-container); border-radius: 8px; padding: 16px; display: grid; gap: 8px; }
+.ai-output .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.chart-card svg { width: 100%; height: auto; display: block; }
+.legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 8px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; }
+.legend i { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+.demo { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-start; }
+.chart-axis { stroke: var(--color-outline); }
+.chart-text { fill: var(--color-on-surface-tertiary); font-size: 11px; }
+@media (max-width: 640px) { .header { padding: 12px 16px; } .card { padding: 16px; } .toolbar > * { flex: 1 1 100%; } .field input, .field select { width: 100%; } }
+@media (prefers-reduced-motion: no-preference) { .btn, input, select { transition: background-color .1s, border-color .1s; } }
+</style>
+</head>
+<body>
+<header class="header">
+  <h1>AI 基座 · 资源列表</h1>
+  <span class="sp"></span>
+  <div class="seg" role="group" aria-label="主题">
+    <button type="button" data-mode="light" aria-pressed="false">浅色</button>
+    <button type="button" data-mode="dark" aria-pressed="false">深色</button>
+    <button type="button" data-mode="auto" aria-pressed="true">跟随系统</button>
+  </div>
+</header>
+<main>
+  <section class="card" aria-labelledby="t1">
+    <h2 id="t1">模型与 Agent 资源</h2>
+    <form class="toolbar" onsubmit="return false">
+      <div class="field"><label for="q">搜索</label><input id="q" type="search" placeholder="名称或 ID" value="support"></div>
+      <div class="field"><label for="type">类型</label>
+        <select id="type"><option>全部</option><option>模型</option><option>Agent</option><option>知识库</option></select></div>
+      <div class="field"><label for="owner">负责人（未填写示例）</label><input id="owner" aria-invalid="true" aria-describedby="owner-err" value=""><span class="err" id="owner-err">请填写负责人</span></div>
+      <div class="field"><label for="env">环境（只读）</label><input id="env" value="production" disabled></div>
+      <button class="btn primary" type="submit">查询</button>
+    </form>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>名称</th><th>类型</th><th>状态</th><th class="num">近 7 天调用</th><th class="num">操作</th></tr></thead>
+        <tbody>
+          <tr><td>support-agent</td><td><span class="tag ai">Agent</span></td><td><span class="status s-ok"><i class="dot"></i>运行中</span></td><td class="num">128,430</td><td class="act"><button class="btn">编辑</button> <button class="btn danger">下线</button></td></tr>
+          <tr><td>policy-kb</td><td><span class="tag kb">知识库</span></td><td><span class="status s-warn"><i class="dot"></i>索引延迟</span></td><td class="num">42,115</td><td class="act"><button class="btn">编辑</button> <button class="btn danger">下线</button></td></tr>
+          <tr><td>search-tool</td><td><span class="tag tool">工具</span></td><td><span class="status s-err"><i class="dot" style="background:var(--color-error)"></i>调用失败</span></td><td class="num">9,806</td><td class="act"><button class="btn">编辑</button> <button class="btn danger">下线</button></td></tr>
+          <tr><td>draft-model-v2</td><td><span class="tag ai">模型</span></td><td><span class="status s-off"><i class="dot"></i>已停用</span></td><td class="num">0</td><td class="act"><button class="btn">编辑</button> <button class="btn danger" disabled>下线</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted">已停用的资源不能再次下线，按钮为禁用态。</p>
+  </section>
+
+  <section class="card" aria-labelledby="t2">
+    <h2 id="t2">AI 生成内容</h2>
+    <div class="ai-output">
+      <span class="row"><span class="tag ai">AI 生成</span><span class="muted" style="color:var(--color-on-surface-variant)">基于 policy-kb 的 3 个片段</span></span>
+      <div><strong>事实：</strong>过去 7 天 support-agent 调用 128,430 次，较上周增长 12%。</div>
+      <div><strong>解释：</strong>policy-kb 的索引延迟导致部分回答引用了旧版条款。</div>
+      <div><strong>建议：</strong>先重建 policy-kb 索引，再观察 24 小时错误率。</div>
+      <div class="row"><button class="btn">复制</button><button class="btn">重试</button><button class="btn primary">采纳建议</button></div>
+    </div>
+  </section>
+
+  <section class="card chart-card" aria-labelledby="t3">
+    <h2 id="t3">各模型日调用量（分类色）</h2>
+    <svg viewBox="0 0 640 240" role="img" aria-label="四个模型在周一至周五的调用量柱状图">
+      <line class="chart-axis" x1="40" y1="200" x2="630" y2="200"/>
+      <g id="bars"></g>
+    </svg>
+    <div class="legend" id="legend"></div>
+    <p class="muted">每个系列同时有图例和柱顶数值，不只靠颜色区分。</p>
+  </section>
+</main>
+<script>
+(function () {
+  var root = document.documentElement, KEY = 'afds-theme';
+  function apply(mode) {
+    root.classList.remove('light', 'dark');
+    if (mode === 'light' || mode === 'dark') root.classList.add(mode);
+    document.querySelectorAll('[data-mode]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.mode === mode)); });
+  }
+  var saved = 'auto'; try { saved = localStorage.getItem(KEY) || 'auto'; } catch (e) {}
+  apply(saved);
+  document.querySelectorAll('[data-mode]').forEach(function (b) {
+    b.addEventListener('click', function () { apply(b.dataset.mode); try { localStorage.setItem(KEY, b.dataset.mode); } catch (e) {} });
+  });
+  var names = ['模型 A', '模型 B', '模型 C', '模型 D'], days = ['周一', '周二', '周三', '周四', '周五'];
+  var data = [[42, 48, 51, 55, 60], [30, 33, 29, 35, 38], [22, 25, 27, 26, 31], [12, 15, 14, 18, 20]];
+  var NS = 'http://www.w3.org/2000/svg', g = document.getElementById('bars'), lg = document.getElementById('legend');
+  function el(n, a, t) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); if (t) e.textContent = t; return e; }
+  days.forEach(function (d, di) {
+    var x0 = 50 + di * 116;
+    data.forEach(function (s, si) {
+      var h = s[di] * 2.7, x = x0 + si * 24;
+      g.appendChild(el('rect', { x: x, y: 200 - h, width: 20, height: h, rx: 2, style: 'fill:var(--color-chart-' + (si + 1) + ')' }));
+      g.appendChild(el('text', { x: x + 10, y: 196 - h, 'text-anchor': 'middle', 'class': 'chart-text' }, s[di]));
+    });
+    g.appendChild(el('text', { x: x0 + 46, y: 218, 'text-anchor': 'middle', 'class': 'chart-text' }, d));
+  });
+  names.forEach(function (n, i) { var s = document.createElement('span'); s.innerHTML = '<i style="background:var(--color-chart-' + (i + 1) + ')"></i>'; s.appendChild(document.createTextNode(n)); lg.appendChild(s); });
+})();
+</script>
+</body>
+</html>

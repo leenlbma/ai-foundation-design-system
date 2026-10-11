@@ -24,3 +24,5 @@ jobs:
           node tokens/antd-theme.mjs --in /tmp/tokens --out /tmp/tokens
           diff -u tokens/antd-theme.json /tmp/tokens/antd-theme.json
           diff -u tokens/antd-theme.js /tmp/tokens/antd-theme.js
+          node examples/build-example.mjs --tokens /tmp/tokens --out /tmp/tokens
+          diff -u examples/resource-list.html /tmp/tokens/resource-list.html

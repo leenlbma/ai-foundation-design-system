@@ -37,11 +37,11 @@ npx @google/design.md lint DESIGN.md
 
 - Errors: 0
 - Warnings: 0
-- Colors: 25
+- Colors: 82（含 dark-* 深色）
 - Typography scales: 10
 - Rounded levels: 7
-- Spacing tokens: 10
-- Components: 26
+- Spacing tokens: 11
+- Components: 89
 
 ## 使用方式
 
@@ -69,6 +69,14 @@ node tokens/build-dark.mjs --report   # 同时打印深色色表与全部对比�
 - `tokens/tokens.json`：W3C DTCG 格式；深色值在顶层 `color-dark` 组。
 
 修改 `DESIGN.md` 后必须重新导出（先运行 `build-dark.mjs`，再运行 `antd-theme.mjs`）；CI 会重新生成并比对，同时检查深色对比度，不一致或不达标则失败。
+
+## 示例页
+
+[`examples/resource-list.html`](examples/resource-list.html) 是一个单文件、无外部依赖的「AI 平台资源列表」示例，内联 `tokens.css` 变量，演示页头、搜索筛选、表格状态徽标、危险与禁用按钮、输入框状态、焦点环、AI 生成内容块和分类色图表，右上角可切换浅色、深色和跟随系统，手机上可读。下载后用浏览器直接打开即可（暂未开启 GitHub Pages）。
+
+~~~bash
+node examples/build-example.mjs   # 由 resource-list.src.html 与 tokens/tokens.css 生成 resource-list.html
+~~~
 
 ## Ant Design 主题
 
